@@ -1,0 +1,35 @@
+def get_positive_float(prompt):
+    while True:
+        try:
+            value = float(input(prompt))
+            if value > 0:
+                return value
+            else:
+                print("Please enter a positive number.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+
+def get_positive_int(prompt):
+    while True:
+        try:
+            value = int(input(prompt))
+            if value > 0:
+                return value
+            else:
+                print("Please enter a positive integer.")
+        except ValueError:
+            print("Invalid input. Please enter an integer.")
+
+def calculate_compound_interest(principal, rate, times_compounded, years):
+    amount = principal * (1 + rate / times_compounded) ** (times_compounded * years)
+    return amount
+
+# Get user input
+principal = get_positive_float("Enter the principal amount: ")
+annual_rate = get_positive_float("Enter the annual interest rate (in %): ") / 100
+times_compounded = get_positive_int("Enter the number of times interest is compounded per year: ")
+years = get_positive_float("Enter the number of years the money is invested: ")
+
+# Calculate the accumulated amount
+accumulated_amount = calculate_compound_interest(principal, annual_rate, times_compounded, years)
+print(f'The accumulated amount after {years} years is: ${accumulated_amount:.2f}')
